@@ -20,11 +20,11 @@
 ## How To Use?
 ```Swift
 mhPlayer = MHAVPlayerSDK(frame: CGRect(x: 0, y: 40, width: view.frame.size.width, height: view.frame.size.width / 2))
-        mhPlayer?.mhPlayerURL = "http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4"
-        mhPlayer?.mhPlayerTitle = "MHPlayer"
-        mhPlayer?.mhAutoOrient = true
-        mhPlayer?.MHAVPlayerSDKDelegate = self
-        view.addSubview(mhPlayer!)
+mhPlayer?.mhPlayerURL = "http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4"
+mhPlayer?.mhPlayerTitle = "MHPlayer"
+mhPlayer?.mhAutoOrient = true
+mhPlayer?.MHAVPlayerSDKDelegate = self
+view.addSubview(mhPlayer!)
 ```
 ##Tips:
   * 欢迎大家使用，有问题的话可以加我QQ1156154406,或者提Issues都可以，我会及时处理，最后别忘了给个star哈~
