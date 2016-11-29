@@ -128,10 +128,8 @@ class MHPlayer: UIView {
         }
     }
     
-    public func mhAddLayer(_ layer: CALayer) {
-//        layer.insertSublayer(mhPlayerLayer!, at: 0)
-//        mhPlayerLayer?.frame = layer.bounds
-        mhPlayerLayer?.frame = layer.bounds
+    public func setPlayLayerBounds(_ Bounds: CGRect) {
+        mhPlayerLayer?.frame = Bounds
     }
 }
 
@@ -159,11 +157,14 @@ extension MHPlayer {
             mhPlayer = AVPlayer(playerItem: mhPlayerItem)
         }
         
-        mhPlayerLayer = AVPlayerLayer(player: mhPlayer)
-        // 设置显示模式
-        mhPlayerLayer?.videoGravity = AVLayerVideoGravityResizeAspect
-        mhPlayerLayer?.contentsScale = UIScreen.main.scale
-        self.layer.insertSublayer(mhPlayerLayer!, at: 0)
+        if mhPlayerLayer != nil {
+            let playerLayer = self.layer.sublayers?.first
+            (playerLayer as! AVPlayerLayer).player = mhPlayer
+        }else {
+            mhPlayerLayer = AVPlayerLayer(player: mhPlayer)
+            self.layer.insertSublayer(mhPlayerLayer!, at: 0)
+        }
+        
         
         //监听status属性变化
         mhPlayerItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
@@ -323,7 +324,7 @@ extension MHPlayer {
     fileprivate func fileExistsAtPath(_ url: String) {
         let fileManager = FileManager.default
         
-        if fileManager.fileExists(atPath: url) {
+        if fileManager.fileExists(atPath: url) == true {
             filePath = URL(fileURLWithPath: url)
             print(filePath)
         }else {

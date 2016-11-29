@@ -80,6 +80,7 @@ extension MHTopMenu {
             titleLabel.frame = CGRect(x: 10, y: 5, width: 200, height: 30)
         }else {
             backButton.frame = CGRect(x: 10, y: 5, width: 30, height: 30)
+            backButton.contentMode = .center
             titleLabel.frame = CGRect(x: 50, y: 5, width: 200, height: 30)
         }
     }

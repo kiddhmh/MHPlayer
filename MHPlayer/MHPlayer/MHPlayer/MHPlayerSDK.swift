@@ -359,7 +359,7 @@ extension MHAVPlayerSDK {
         bottomMenu.frame = CGRect(x: 0, y: backView.height - 40, width: backView.width, height: 40)
         loadingView.center = CGPoint(x: backView.centerX, y: backView.centerY)
         
-        mhPlayer.mhAddLayer(self.layer)
+        mhPlayer.setPlayLayerBounds(self.layer.bounds)
     }
     
 }

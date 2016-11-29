@@ -40,8 +40,8 @@ class ViewController: UIViewController {
 extension ViewController: MHAVPlayerSDKDelegate {
     
     func mhGoBack() {
-            mhPlayer?.mhStopPlayer()
-            self.dismiss(animated: true, completion: nil)
+//            mhPlayer?.mhStopPlayer()
+//            self.dismiss(animated: true, completion: nil)
     }
     
     func mhNextPlayer() {

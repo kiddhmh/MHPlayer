@@ -256,6 +256,7 @@ extension MHPlayerBottomMenu {
         timeLabel.frame = CGRect(x: fullOrSmallBtn.left - 108, y: 10, width: 108, height: 20)
         loadProgressView.frame = CGRect(x: playOrPauseBtn.right + nextPlayerBtn.width + 7, y: 20, width: timeLabel.left - playOrPauseBtn.right - nextPlayerBtn.width - 14, height: 31)
         playSlider.frame = CGRect(x: playOrPauseBtn.right + nextPlayerBtn.width + 5, y: 5, width: loadProgressView.width + 4, height: 31)
+        fullOrSmallBtn.imageView?.contentMode = .center
     }
 }
 
