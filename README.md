@@ -27,4 +27,4 @@ mhPlayer?.MHAVPlayerSDKDelegate = self
 view.addSubview(mhPlayer!)
 ```
 ##Tips:
-  * 欢迎大家使用，有问题的话可以加我QQ1156154406,或者提Issues都可以，我会及时处理，最后别忘了给个star哈~
+  * 欢迎大家使用，有问题的话可以加我QQ1156154406,或者提Issues都可以，我会及时处理。多多交流~
