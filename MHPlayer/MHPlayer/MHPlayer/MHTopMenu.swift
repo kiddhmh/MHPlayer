@@ -2,7 +2,7 @@
 //  MHTopMenu.swift
 //  MHPlayer
 //
-//  Created by 胡明昊 on 16/11/25.
+//  Created by kidd on 16/11/25.
 //  Copyright © 2016年 CMCC. All rights reserved.
 //
 
@@ -26,7 +26,6 @@ class MHTopMenu: UIView {
     fileprivate lazy var backButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "BackBtn"), for: .normal)
-        button.setBackgroundImage(UIImage(named: "BackBtnHL"), for: .highlighted)
         button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         return button
     }()
@@ -79,7 +78,7 @@ extension MHTopMenu {
             backButton.removeFromSuperview()
             titleLabel.frame = CGRect(x: 10, y: 5, width: 200, height: 30)
         }else {
-            backButton.frame = CGRect(x: 10, y: 5, width: 30, height: 30)
+            backButton.frame = CGRect(x: 10, y: 10, width: 18, height: 18)
             backButton.contentMode = .center
             titleLabel.frame = CGRect(x: 50, y: 5, width: 200, height: 30)
         }

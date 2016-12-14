@@ -2,7 +2,7 @@
 //  MHPlayerBottomMenu.swift
 //  MHPlayer
 //
-//  Created by 胡明昊 on 16/11/25.
+//  Created by kidd on 16/11/25.
 //  Copyright © 2016年 CMCC. All rights reserved.
 //
 
@@ -25,7 +25,6 @@ class MHPlayerBottomMenu: UIView {
             if isEnd == true {
                 isPlay = false
                 playOrPauseBtn.setImage(UIImage(named: "play"), for: .normal)
-                playOrPauseBtn.setImage(UIImage(named: "playHL"), for: .highlighted)
                 playSlider.setValue(0.0, animated: true)
                 loadProgressView.setProgress(0.0, animated: true)
                 let time = mhPlayerTimeStyle(mhTotalTime!)
@@ -89,7 +88,7 @@ class MHPlayerBottomMenu: UIView {
     fileprivate lazy var playOrPauseBtn: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "play"), for: .normal)
-        button.setImage(UIImage(named: "playHL"), for: .highlighted)
+        button.contentMode = UIViewContentMode.center
         button.addTarget(self, action: #selector(playOrPauseAction), for: .touchUpInside)
         return button
     }()
@@ -97,7 +96,8 @@ class MHPlayerBottomMenu: UIView {
     ///下一个视屏（全屏时有）
     fileprivate lazy var nextPlayerBtn: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "Next"), for: .normal)
+        button.setImage(UIImage(named: "next"), for: .normal)
+        button.contentMode = UIViewContentMode.center
         button.addTarget(self, action: #selector(nextPlayerAction), for: .touchUpInside)
         return button
     }()
@@ -116,7 +116,7 @@ class MHPlayerBottomMenu: UIView {
         let transparentImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        slider.setThumbImage(UIImage(named: "icon_progress"), for: .normal)
+        slider.setThumbImage(UIImage(named: "progressDot"), for: .normal)
         slider.setMaximumTrackImage(transparentImage, for: .normal)
         slider.setMinimumTrackImage(transparentImage, for: .normal)
         
@@ -138,7 +138,8 @@ class MHPlayerBottomMenu: UIView {
     ///放大/缩小按钮
     fileprivate lazy var fullOrSmallBtn: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "normal_screen"), for: .normal)
+        button.setImage(UIImage(named: "fullScreen"), for: .normal)
+        button.contentMode = UIViewContentMode.center
         button.addTarget(self, action: #selector(fullOrSmallAction), for: .touchUpInside)
         return button
     }()
@@ -174,11 +175,9 @@ extension MHPlayerBottomMenu {
         if isPlay == true {
             isPlay = false
             playOrPauseBtn.setImage(UIImage(named: "play"), for: .normal)
-            playOrPauseBtn.setImage(UIImage(named: "playHL"), for: .highlighted)
         }else {
             isPlay = true
             playOrPauseBtn.setImage(UIImage(named: "pause"), for: .normal)
-            playOrPauseBtn.setImage(UIImage(named: "pauseHL"), for: .highlighted)
         }
         if mhPlayOrPauseBlock != nil {
             mhPlayOrPauseBlock!(isPlay)
@@ -243,20 +242,19 @@ extension MHPlayerBottomMenu {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        playOrPauseBtn.frame = CGRect(x: self.left, y: 8, width: 36, height: 23)
+        playOrPauseBtn.frame = CGRect(x: self.left, y: 8, width: 25, height: 25)
         if mhFull == true {
-            nextPlayerBtn.frame = CGRect(x: playOrPauseBtn.right, y: 5, width: 30, height: 30)
-            fullOrSmallBtn.setImage(UIImage(named: "full_screen"), for: .normal)
+            nextPlayerBtn.frame = CGRect(x: playOrPauseBtn.right, y: 8, width: 25, height: 25)
+            fullOrSmallBtn.setImage(UIImage(named: "exitFullScreen"), for: .normal)
         }else {
             nextPlayerBtn.frame = CGRect(x: playOrPauseBtn.right + 5, y: 5, width: 0, height: 0)
-            fullOrSmallBtn.setImage(UIImage(named: "normal_screen"), for: .normal)
+            fullOrSmallBtn.setImage(UIImage(named: "fullScreen"), for: .normal)
         }
         
-        fullOrSmallBtn.frame = CGRect(x: self.width - 35, y: 0, width: 35, height: self.height)
+        fullOrSmallBtn.frame = CGRect(x: self.width - 35, y: (self.height - 25) / 2 , width: 25, height: 25)
         timeLabel.frame = CGRect(x: fullOrSmallBtn.left - 108, y: 10, width: 108, height: 20)
-        loadProgressView.frame = CGRect(x: playOrPauseBtn.right + nextPlayerBtn.width + 7, y: 20, width: timeLabel.left - playOrPauseBtn.right - nextPlayerBtn.width - 14, height: 31)
+        loadProgressView.frame = CGRect(x: playOrPauseBtn.right + nextPlayerBtn.width + 7, y: 20, width: timeLabel.left - playOrPauseBtn.right - nextPlayerBtn.width - 14, height: 20)
         playSlider.frame = CGRect(x: playOrPauseBtn.right + nextPlayerBtn.width + 5, y: 5, width: loadProgressView.width + 4, height: 31)
-        fullOrSmallBtn.imageView?.contentMode = .center
     }
 }
 

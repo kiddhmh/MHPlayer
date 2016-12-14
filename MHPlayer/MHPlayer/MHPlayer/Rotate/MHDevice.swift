@@ -2,7 +2,7 @@
 //  MHDevice.swift
 //  MHPlayer
 //
-//  Created by 胡明昊 on 16/11/28.
+//  Created by kidd on 16/11/28.
 //  Copyright © 2016年 CMCC. All rights reserved.
 //
 
