@@ -45,7 +45,11 @@ extension ViewController: MHAVPlayerSDKDelegate {
     }
     
     func mhNextPlayer() {
+<<<<<<< HEAD
         mhPlayer?.mhPlayerURL = "http://baobab.wdjcdn.com/1455782903700jy.mp4";
+=======
+        mhPlayer?.mhPlayerURL = "http://baobab.wdjcdn.com/1455782903700jy.mp4"
+>>>>>>> 8a73db6a47cf680fe97adaa9f097232dd399038c
         mhPlayer?.mhPlayerTitle = "第二部";
     }
     
