@@ -342,7 +342,7 @@ extension MHPlayer {
         }
         mhPlayerItem?.removeObserver(self, forKeyPath: "status", context: nil)
         mhPlayerItem?.removeObserver(self, forKeyPath: "loadedTimeRanges", context: nil)
-        mhPlayer?.removeTimeObserver(playbackTimeObserver)
+        mhPlayer?.removeTimeObserver(playbackTimeObserver!)
         playbackTimeObserver = nil
         NotificationCenter.default.removeObserver(self)
         

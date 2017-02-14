@@ -18,8 +18,8 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         mhPlayer = MHAVPlayerSDK(frame: CGRect(x: 0, y: 40, width: view.frame.size.width, height: view.frame.size.width / 2))
-        mhPlayer?.mhPlayerURL = "http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4"
-        mhPlayer?.mhPlayerTitle = "MHPlayer"
+        mhPlayer?.mhPlayerURL = "http://baobab.wdjcdn.com/14562919706254.mp4"
+        mhPlayer?.mhPlayerTitle = "第一部"
         mhPlayer?.mhAutoOrient = true
         mhPlayer?.MHAVPlayerSDKDelegate = self
         mhPlayer?.mhLastTime = 50
@@ -45,8 +45,8 @@ extension ViewController: MHAVPlayerSDKDelegate {
     }
     
     func mhNextPlayer() {
-        mhPlayer?.mhPlayerURL = "http://www.jxgbwlxy.gov.cn/tm/course/041629011/sco1/1.mp4";
-        mhPlayer?.mhPlayerTitle = "谢军是傻逼";
+        mhPlayer?.mhPlayerURL = "http://baobab.wdjcdn.com/1455782903700jy.mp4";
+        mhPlayer?.mhPlayerTitle = "第二部";
     }
     
 }
