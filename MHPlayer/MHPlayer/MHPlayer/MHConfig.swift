@@ -36,4 +36,7 @@ struct MHClosure {
     
     /// 播放是否延迟
     static var mhDelayPlay: ((_ flag: Bool) -> ())?
+    
+    /// 是否自动横屏
+    static var mhAutoOrigin: (() -> ())?
 }

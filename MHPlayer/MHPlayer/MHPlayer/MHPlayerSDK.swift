@@ -47,7 +47,7 @@ class MHAVPlayerSDK: UIView {
     }
     
     /// 是否开启自动横屏,默认NO
-    var mhAutoOrient: Bool?
+    var mhAutoOrient: Bool = false
     
     ///是否关闭过播放器（关闭，不是暂停）
     fileprivate var isStop: Bool?
@@ -113,7 +113,6 @@ class MHAVPlayerSDK: UIView {
         mhGestureButtonBlock()
         mhTopMenuBlock()
         mhBottomMenuBlock()
-        
     }
     
     /// 关闭播放器
@@ -205,12 +204,18 @@ extension MHAVPlayerSDK {
                     sself.frame = sself.firstFrame
                     sself.bottomMenu.mhFull = false
                 }else if origent == UIDeviceOrientation.landscapeLeft || origent == UIDeviceOrientation.landscapeRight {
-                    sself.frame = (sself.window?.bounds)!
+                    sself.frame = UIScreen.main.bounds
                     sself.bottomMenu.mhFull = true
                 }
             }
         }
         
+        
+        // 自动改变屏幕方向
+        MHClosure.mhAutoOrigin = { [weak self] in
+            guard let sself = self else {return}
+            UIDevice.setOrientation(sself.mhAutoOrient)
+        }
         
         //播放延迟
         MHClosure.mhDelayPlay = { [weak self] (flag) in

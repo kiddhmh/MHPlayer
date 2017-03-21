@@ -182,11 +182,14 @@ extension MHPlayer {
 // MARK: - 监听事件
 extension MHPlayer {
     
-    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         let playerItem = object as? AVPlayerItem
         if keyPath == "status" {
+            
+            if MHClosure.mhAutoOrigin != nil {
+                MHClosure.mhAutoOrigin!()
+            }
             
             if playerItem?.status == .readyToPlay {
                 print("播放成功")
@@ -239,7 +242,7 @@ extension MHPlayer {
     /// 屏幕方向改变时的监听
     @objc fileprivate func orientChange(_ notification: NSNotification) {
         
-        let origent = UIDevice.current.orientation
+        let origent = (notification.object as! UIDevice).orientation
         if MHClosure.mhDirectionChangeClosure != nil{
             MHClosure.mhDirectionChangeClosure!(origent)
         }
@@ -326,7 +329,7 @@ extension MHPlayer {
         
         if fileManager.fileExists(atPath: url) == true {
             filePath = URL(fileURLWithPath: url)
-            print(filePath)
+            print(filePath ?? "url为空")
         }else {
             filePath = NSURL(string: url) as URL?
             print("没有本地文件")

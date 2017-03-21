@@ -20,10 +20,9 @@ class ViewController: UIViewController {
         mhPlayer = MHAVPlayerSDK(frame: CGRect(x: 0, y: 40, width: view.frame.size.width, height: view.frame.size.width / 2))
         mhPlayer?.mhPlayerURL = "http://baobab.wdjcdn.com/14562919706254.mp4"
         mhPlayer?.mhPlayerTitle = "第一部"
-        mhPlayer?.mhAutoOrient = true
         mhPlayer?.MHAVPlayerSDKDelegate = self
         mhPlayer?.mhLastTime = 50
-        
+        mhPlayer?.mhAutoOrient = true
         view.addSubview(mhPlayer!)
         
     }
